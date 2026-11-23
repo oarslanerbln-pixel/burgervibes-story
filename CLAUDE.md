@@ -18,12 +18,14 @@ of stories and reels.
 | `assets/selects/` | Cut 9:16 clips, named by slot id (`W1-Mo-2.mp4`), plus shared library cuts `LIB-C046.mp4` used by every slot whose shot starts with `C046:` |
 | `assets/ai/` | Gemini images, named by slot id (`W1-Mo-1.png`) |
 | `assets/fonts/` | Anton, Bebas Neue, Pacifico (local, no CDN) |
-| `tools/plan.py` → `tools/plan.json` | The story plan (23.11.–24.12.2026, 92 slots incl. the advent calendar). Edit `plan.py`, run it, then `tools/build_page.py`. |
+| `tools/plan.py` → `tools/plan.json` | The story plan (23.11.–27.12.2026, 99 slots incl. the advent calendar). Edit `plan.py`, run it, then `tools/build_page.py`. |
 | `plan/story-plan.html` | Same plan as a page (published copy: claude.ai/artifact/RHo2kgo4V7Kj1vXdVDFwi5) |
 | `plan/selects.json` | Your edit decisions: slot → clip, in/out, crop, speed |
 | `plan/reels/*.json` | Reel edit decisions (clips, hook, captions, CTA) |
 | `plan/overrides.json` | Refined Gemini scenes after art-director rejects |
-| `SHOTLIST.md` | What the user must film on shoot day, grouped by setup |
+| `SHOTLIST.md` | Next shoot: open story scenes by date, Reel scenes, info to collect |
+| `REELS.md` | Reel concepts (storytelling, calendar/agenda) Dec 2026 – Feb 2027 |
+| `TRENDS.md` | Weekly Trend-Radar rules and the moment calendar |
 | `tools/` | Python pipeline (ffmpeg + Pillow) |
 | `remotion/` | Remotion project: compositions `Story` and `Reel` |
 | `output/` | Finished files. `stories/` (ffmpeg), `remotion/` (Remotion), `review/` |
@@ -86,7 +88,8 @@ user answers "onay".
   library in the app; no external tracks (GEMA). Exception: original sound
   from the shoot (`keep_audio: true`, e.g. sizzling).
 - **Claims:** "100 % Halal", prices, opening hours, weights only as confirmed
-  by the user. Never invent numbers for quizzes.
+  by the user. Never invent numbers for quizzes. Holiday hours in the plan are a
+  proposal until the owner confirms them (the brief says so on those frames).
 - **Instagram via the Chrome connection:** reading and drafting are fine.
   Changing the profile needs an explicit OK (show before → after). Never
   post, delete, send DMs/comments, start ads or spend money.

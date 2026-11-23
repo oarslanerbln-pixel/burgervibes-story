@@ -168,5 +168,88 @@
   "out": 9.0,
   "note": "shared library clip",
   "text_pos": "bottom"
+ },
+ "LIB-C003": {
+  "clip": "footage/2026-11/drive/DJI_20261101183532_0689_D.MP4",
+  "in": 1.0,
+  "out": 8.0,
+  "note": "shared library clip"
+ },
+ "LIB-C052": {
+  "clip": "footage/2026-11/drive/DJI_20261101191941_0738_D.MP4",
+  "in": 9.0,
+  "out": 16.0,
+  "note": "shared library clip",
+  "x": 0.45
+ },
+ "LIB-C007": {
+  "clip": "footage/2026-11/drive/DJI_20261101183936_0693_D.MP4",
+  "in": 2.0,
+  "out": 9.0,
+  "note": "shared library clip",
+  "x": 0.5
+ },
+ "LIB-C051": {
+  "clip": "footage/2026-11/drive/DJI_20261101191853_0737_D.MP4",
+  "in": 0.0,
+  "out": 4.6,
+  "note": "shared library clip"
+ },
+ "LIB-C025": {
+  "clip": "footage/2026-11/drive/DJI_20261101185000_0711_D.MP4",
+  "in": 2.5,
+  "out": 9.0,
+  "note": "shared library clip",
+  "text_pos": "bottom"
+ },
+ "LIB-C009": {
+  "clip": "footage/2026-11/drive/DJI_20261101184102_0695_D.MP4",
+  "in": 0.0,
+  "out": 4.2,
+  "note": "shared library clip"
+ },
+ "LIB-C034": {
+  "clip": "footage/2026-11/drive/DJI_20261101185409_0720_D.MP4",
+  "in": 0.0,
+  "out": 7.6,
+  "note": "shared library clip",
+  "text_pos": "bottom"
+ },
+ "LIB-C044": {
+  "clip": "footage/2026-11/drive/DJI_20261101191601_0730_D.MP4",
+  "in": 0.0,
+  "out": 3.6,
+  "note": "shared library clip"
+ },
+ "LIB-C050": {
+  "clip": "footage/2026-11/drive/DJI_20261101191836_0736_D.MP4",
+  "in": 0.0,
+  "out": 6.1,
+  "note": "shared library clip"
+ },
+ "LIB-C006": {
+  "clip": "footage/2026-11/drive/DJI_20261101183911_0692_D.MP4",
+  "in": 4.0,
+  "out": 11.0,
+  "note": "shared library clip"
+ },
+ "LIB-C057": {
+  "clip": "footage/2026-11/drive/DJI_20261101192207_0743_D.MP4",
+  "in": 3.0,
+  "out": 10.0,
+  "note": "shared library clip",
+  "x": 0.5
+ },
+ "LIB-C028": {
+  "clip": "footage/2026-11/drive/DJI_20261101185123_0714_D.MP4",
+  "in": 0.5,
+  "out": 7.5,
+  "note": "shared library clip"
+ },
+ "LIB-C024": {
+  "clip": "footage/2026-11/drive/DJI_20261101184920_0710_D.MP4",
+  "in": 8.5,
+  "out": 15.5,
+  "note": "shared library clip"
  }
 }
