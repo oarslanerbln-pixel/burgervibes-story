@@ -1,0 +1,123 @@
+{
+ "_comment": "Week 1 v2 selects from the shoot of 01.11.2026 (Drive folder). Clip ids: footage/2026-11/_index/index.json",
+ "W1-Di-1": {
+  "clip": "footage/2026-11/drive/DJI_20261101184501_0699_D.MP4",
+  "in": 2.0,
+  "out": 9.0,
+  "note": "C013"
+ },
+ "W1-Di-2": {
+  "clip": "footage/2026-11/drive/DJI_20261101183532_0689_D.MP4",
+  "in": 1.0,
+  "out": 8.0,
+  "note": "C003"
+ },
+ "W1-Di-3": {
+  "clip": "footage/2026-11/drive/DJI_20261101184554_0702_D.MP4",
+  "in": 1.0,
+  "out": 7.5,
+  "note": "C016"
+ },
+ "W1-Di-4": {
+  "clip": "footage/2026-11/drive/DJI_20261101184920_0710_D.MP4",
+  "in": 8.5,
+  "out": 15.5,
+  "note": "C024"
+ },
+ "W1-Mi-1": {
+  "clip": "footage/2026-11/drive/DJI_20261101191955_0739_D.MP4",
+  "in": 9.0,
+  "out": 16.0,
+  "note": "C053",
+  "x": 0.45
+ },
+ "W1-Mi-2": {
+  "clip": "footage/2026-11/drive/DJI_20261101192053_0740_D.MP4",
+  "in": 1.0,
+  "out": 8.0,
+  "note": "C054"
+ },
+ "W1-Mi-3": {
+  "clip": "footage/2026-11/drive/DJI_20261101183911_0692_D.MP4",
+  "in": 4.0,
+  "out": 11.0,
+  "note": "C006"
+ },
+ "W1-Do-1": {
+  "clip": "footage/2026-11/drive/DJI_20261101184407_0698_D.MP4",
+  "in": 2.0,
+  "out": 9.0,
+  "note": "C012",
+  "text_pos": "bottom"
+ },
+ "W1-Do-2": {
+  "clip": "footage/2026-11/drive/DJI_20261101185812_0723_D.MP4",
+  "in": 0.3,
+  "out": 9.6,
+  "note": "C037",
+  "keep_audio": true,
+  "text_pos": "bottom"
+ },
+ "W1-Do-3": {
+  "clip": "footage/2026-11/drive/DJI_20261101185000_0711_D.MP4",
+  "in": 2.5,
+  "out": 9.0,
+  "note": "C025",
+  "text_pos": "bottom"
+ },
+ "W1-Fr-1": {
+  "clip": "footage/2026-11/drive/DJI_20261101191836_0736_D.MP4",
+  "in": 0.0,
+  "out": 6.1,
+  "note": "C050"
+ },
+ "W1-Fr-2": {
+  "clip": "footage/2026-11/drive/DJI_20261101191752_0735_D.MP4",
+  "in": 1.0,
+  "out": 8.0,
+  "note": "C049"
+ },
+ "W1-Fr-3": {
+  "clip": "footage/2026-11/drive/DJI_20261101191657_0732_D.MP4",
+  "in": 0.0,
+  "out": 5.4,
+  "note": "C046"
+ },
+ "W1-Sa-1": {
+  "clip": "footage/2026-11/drive/DJI_20261101184126_0697_D.MP4",
+  "in": 12.0,
+  "out": 19.0,
+  "note": "C011"
+ },
+ "W1-Sa-2": {
+  "clip": "footage/2026-11/drive/DJI_20261101191221_0727_D.MP4",
+  "in": 1.0,
+  "out": 9.0,
+  "note": "C041"
+ },
+ "W1-Sa-3": {
+  "clip": "footage/2026-11/drive/DJI_20261101192134_0742_D.MP4",
+  "in": 0.0,
+  "out": 3.7,
+  "note": "C056"
+ },
+ "W1-So-1": {
+  "clip": "footage/2026-11/drive/DJI_20261101185123_0714_D.MP4",
+  "in": 0.5,
+  "out": 7.5,
+  "note": "C028"
+ },
+ "W1-So-2": {
+  "clip": "footage/2026-11/drive/DJI_20261101192207_0743_D.MP4",
+  "in": 3.0,
+  "out": 10.0,
+  "note": "C057",
+  "x": 0.5
+ },
+ "W1-So-3": {
+  "clip": "footage/2026-11/drive/DJI_20261101191853_0737_D.MP4",
+  "in": 0.0,
+  "out": 4.6,
+  "note": "C051"
+ }
+}

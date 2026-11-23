@@ -62,6 +62,8 @@ def main():
     dkey = DAYKEYS[day.weekday()]
     slots = [s for s in plan["slots"] if s["week"] == week and s["day"] == dkey]
 
+    sel_path = os.path.join(ROOT, "plan", "selects.json")
+    selects = json.load(open(sel_path, encoding="utf-8")) if os.path.exists(sel_path) else {}
     out_dir = os.path.join(ROOT, "output", "daily", day.isoformat())
     os.makedirs(out_dir, exist_ok=True)
 
@@ -96,8 +98,11 @@ def main():
             cmd += ["--sub", s["sub"]]
         if s["script_sub"]:
             cmd += ["--script-sub"]
+        if selects.get(s["id"], {}).get("text_pos") == "bottom":
+            cmd += ["--pos", "bottom"]
         if media:
-            cmd += ["--bg", media]
+            # Selects only carry audio when cut with keep_audio (original sound, never music).
+            cmd += ["--bg", media, "--keep-audio"]
         subprocess.run(cmd, check=True)
         rows.append((s, os.path.basename(target), "AI" if s["src"] == "FLOW" and media else
                      "yedek arka plan" if s["src"] == "FLOW" else "gerçek çekim"))

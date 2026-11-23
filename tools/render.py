@@ -62,7 +62,7 @@ def main():
             cmd += ["--script-sub"]
         if media:
             cmd += ["--bg", media]
-        if a.keep_audio:
+        if a.keep_audio or (media and "selects" in media):
             cmd += ["--keep-audio"]
         subprocess.run(cmd, check=True)
         done.append(s["id"])

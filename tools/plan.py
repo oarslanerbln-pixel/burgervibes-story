@@ -47,24 +47,27 @@ S = [
  (1,"Mo","11:30","FLOW","an empty burger restaurant counter at opening time, bar stools, steam rising from the kitchen pass, pink and cyan neon glow","NEUE WOCHE.\nNEUE VIBES.","Wir haben offen","neon","pink","Standort"),
  (1,"Mo","13:00","ECHT","Klassiker-Burger in Zeitlupe durchschneiden, Querschnitt nah","UNSER\nKLASSIKER","100% BEEF · 100% HALAL","punch","cyan","—"),
  (1,"Mo","18:30","FLOW","a glowing menu board on a dark brick wall, completely out of focus, soft bokeh, nothing readable","WAS BESTELLST\nDU ZUERST?","JETZT ABSTIMMEN","ask","pink","Umfrage: Classic / Cheese"),
- (1,"Di","11:00","ECHT","Patties formen / Fleisch vorbereiten, Hände nah, Zeitlupe","FRISCH\nGEFORMT.","JEDEN TAG","punch","cyan","—"),
- (1,"Di","14:00","FLOW","macro shot of a cast-iron flat-top grill with rising smoke and heat haze, pink neon rim light, no food","DER GRILL\nIST AN.","Ab jetzt wird's laut","neon","pink","—"),
- (1,"Di","18:00","ECHT","Burger-Bau im Zeitraffer (vom Bun bis zum Papier)","VON 0\nAUF BURGER","IN SEKUNDEN","punch","pink","Quiz: Wie viele Sekunden? (9 / 15 / 30) + 9,0s-Reel teilen"),
- (1,"Mi","12:00","FLOW","two glowing neon arrows on a dark brick wall, one pointing left in pink, one pointing right in cyan, empty center","KÄSE\nODER SAUCE?","JETZT ABSTIMMEN","ask","pink","Umfrage: Käse / Sauce"),
- (1,"Mi","15:00","ECHT","Dirty Fries Close-up, Sauce läuft","DIRTY ODER\nCLASSIC?","DEINE WAHL","ask","cyan","Umfrage: Dirty / Classic"),
- (1,"Mi","19:00","FLOW","abstract pink and cyan light trails streaking across a dark room, long exposure","ERGEBNIS!","Ihr habt entschieden","neon","cyan","Umfrage-Ergebnis teilen"),
- (1,"Do","11:00","ECHT","Team-Foto vor der Neon-Wand, alle lachen (Einverständnis einholen)","DAS\nSIND WIR.","Die Crew von Burger Vibes","neon","pink","—"),
- (1,"Do","14:00","ECHT","Ein Crew-Mitglied spricht 5 Sekunden in die Kamera: Lieblingsburger","FRAG\nDIE CREW","STELL DEINE FRAGE","ask","cyan","Fragen-Sticker"),
- (1,"Do","19:00","FLOW","90s still life on a neon-lit table: a cassette tape, sunglasses and a plain paper takeaway bag","GUTE LEUTE.\nGUTE VIBES.","","neon","pink","—"),
- (1,"Fr","12:00","FLOW","rainy Berlin street at dusk seen through a restaurant window, neon reflections on wet glass","FREITAG.\nNEON.\nBURGER.","Heute Abend bei uns","neon","pink","—"),
- (1,"Fr","17:00","ECHT","Laden füllt sich, Tische, Bestellungen am Pass","LÄUFT\nBEI UNS.","","punch","cyan","Standort"),
- (1,"Fr","21:00","ECHT","Burger in der Hand vor dem Neon-Schild","WOCHENENDE\nSTARTET HIER","","neon","cyan","Link: Google Maps"),
- (1,"Sa","12:00","FLOW","polaroid photos scattered on a neon-lit diner table, people in them blurred, nostalgic mood","EURE\nVIBES","Markiert uns @burgervibes.berlin","neon","pink","Erwähnung @burgervibes.berlin"),
- (1,"Sa","15:00","ECHT","Gäste-Story reposten (nur mit Markierung/Erlaubnis)","DANKE!","Ihr seid die Vibes","punch","pink","Repost"),
- (1,"Sa","19:00","ECHT","Rush-Hour am Tresen, volle Hände, Tickets","VOLLES\nHAUS.","KOMM VORBEI","punch","cyan","Standort"),
- (1,"So","13:00","FLOW","cozy Sunday afternoon light, a plain paper takeaway bag sealed with a pink sticker resting on a sofa armrest, soft focus","SONNTAG?\nCOUCH-BURGER.","Zum Mitnehmen","neon","pink","—"),
- (1,"So","16:00","ECHT","Zwei Hände, zwei Burger, einer zieht den Burger weg","TEILEN?\nNIEMALS.","","punch","cyan","Emoji-Slider 🍔"),
- (1,"So","19:00","FLOW","a single glowing neon arrow on a dark tiled wall pointing right","NÄCHSTE\nWOCHE","Hinter dem Grill","neon","cyan","—"),
+ # Week 1 v2 (from Tue 24.11): built on the real shoot of 01.11.2026. Each day is
+ # one mini story (hook -> process -> payoff -> interaction) instead of three loose frames.
+ (1,"Di","11:00","ECHT","C013: Patties kommen gewürzt auf den Grill","WAS PASSIERT\nAUF DEM GRILL?","Bleib dran","punch","pink","—"),
+ (1,"Di","13:00","ECHT","C003: Käse schmilzt auf den Patties, Kruste sichtbar","DIE KRUSTE\nHAT EINEN NAMEN.","Maillard-Reaktion","neon","cyan","—"),
+ (1,"Di","13:01","ECHT","C016: Brötchen rösten auf der Platte","AUCH DAS BRÖTCHEN\nWIRD GERÖSTET.","Damit die Sauce nicht durchweicht","punch","cyan","—"),
+ (1,"Di","18:00","ECHT","C024: Burger wird gebaut, Hero-Shot am Ende","VON ROH\nZU WOW.","WIE ISST DU DEINEN BURGER?","ask","pink","Umfrage: Mit den Händen / Messer & Gabel"),
+ (1,"Mi","12:00","ECHT","C053: Käsesauce läuft von der Kelle","KÄSE\nODER SAUCE?","JETZT ABSTIMMEN","ask","pink","Umfrage: Käse / Sauce"),
+ (1,"Mi","15:00","ECHT","C054: Maiskolben mit Burger-Vibes-Fähnchen","MAIS ODER\nPOMMES?","DEINE SEITE","ask","cyan","Umfrage: Mais / Pommes"),
+ (1,"Mi","19:00","ECHT","C006: Burger vor gestapelten Burger-Vibes-Boxen","ERGEBNIS!","Schick's dem, der falsch gewählt hat","neon","cyan","Umfrage-Ergebnis teilen"),
+ (1,"Do","11:00","ECHT","C012: Crew-Mitglied winkt in die Kamera","SAG HALLO\nZUR CREW.","Die Hände hinter deinem Burger","neon","pink","—"),
+ (1,"Do","14:00","ECHT","C037: Crew-Mitglied spricht am Grill in die Kamera (Originalton)","FRAG\nDIE CREW","WAS WILLST DU WISSEN?","ask","cyan","Fragen-Sticker"),
+ (1,"Do","19:00","ECHT","C025: Crew packt eine Bestellung","MIT LIEBE\nGEPACKT.","Burger with Love","punch","pink","—"),
+ (1,"Fr","12:00","ECHT","C050: Laden von außen bei Nacht, Neon an","FREITAG.\nNEON.\nBURGER.","Heute Abend bei uns","neon","pink","—"),
+ (1,"Fr","17:00","ECHT","C049: Neon-Wand 90s Burger Vibes","SCHON MAL\nHIER GEGESSEN?","SAG'S UNS","ask","cyan","Umfrage: Stammgast / Noch nicht"),
+ (1,"Fr","21:00","ECHT","C046: Neon-Schriftzug an der Wand","WOCHENENDE\nSTARTET HIER","","neon","cyan","Link: Google Maps"),
+ (1,"Sa","12:00","ECHT","C011: Box auf, Burger im Papier","DEIN BURGER\nWARTET SCHON.","","punch","pink","Standort"),
+ (1,"Sa","15:00","ECHT","C041: Kuchen in der Vitrine","PLATZ FÜR\nNACHTISCH?","","ask","pink","Emoji-Slider 🍰"),
+ (1,"Sa","19:00","ECHT","C056: Burger-Vibes-Fähnchen im Essen","MARKIER\nUNS.","Wir reposten eure Stories","neon","cyan","Erwähnung @burgervibes.berlin"),
+ (1,"So","13:00","ECHT","C028: Burger-Vibes-Papiertüte","SONNTAG?\nCOUCH-BURGER.","Zum Mitnehmen","neon","pink","—"),
+ (1,"So","16:00","ECHT","C057: Crispy Chicken auf dem Tablett","TEAM BEEF\nODER TEAM CHICKEN?","JETZT ABSTIMMEN","ask","cyan","Umfrage: Beef / Chicken"),
+ (1,"So","19:00","ECHT","C051: Burger-Vibes-Leuchtschrift","BIS MORGEN,\nTEMPELHOF.","Neue Woche, neue Vibes","neon","pink","—"),
  # ---------------- WEEK 2 - Handwerk
  (2,"Mo","11:30","FLOW","macro of sesame seeds and flour on a dark wooden board, warm golden light with a pink neon edge, no bread shown whole","ES BEGINNT\nMIT DEM BUN.","","neon","cyan","—"),
  (2,"Mo","13:00","ECHT","Käse schmilzt über das Patty, Cheese-Pull in Zeitlupe","CHEESE\nO'CLOCK","","punch","pink","—"),
@@ -151,7 +154,7 @@ def build():
             "preset": preset, "accent": accent, "sticker": sticker,
         })
     # Sanity: 28 days x 3 slots, no duplicate headlines across the month.
-    assert len(slots) == 84, len(slots)
+    assert len(slots) >= 84, len(slots)
     titles = [s["title"] for s in slots]
     dupes = {x for x in titles if titles.count(x) > 1}
     return slots, dupes

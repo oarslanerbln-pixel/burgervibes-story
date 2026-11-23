@@ -5,7 +5,6 @@ footage/**/*
 output/**/*
 !output/**/
 !output/**/.keep
-assets/selects/*
 assets/ai/*
 !assets/**/.keep
 __pycache__/

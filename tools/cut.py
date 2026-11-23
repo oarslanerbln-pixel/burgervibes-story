@@ -11,7 +11,8 @@ selects.json (Claude writes it after reading the contact sheets):
   }
   x      horizontal crop centre for landscape footage (0 = left, 1 = right)
   speed  0.5 = half-speed slow motion (only looks smooth on 50/60 fps clips)
-Output: assets/selects/<slot>.mp4, 1080x1920, 30 fps, no audio (music is
+Output: assets/selects/<slot>.mp4, 1080x1920, 30 fps, CRF 22 (small enough to
+commit, so the daily cloud job finds them; the story render re-encodes anyway), no audio (music is
 added in Instagram; keep_audio: true keeps the original sound, e.g. sizzling).
 """
 import json
@@ -35,7 +36,7 @@ def cut(sid, s):
           f"crop=1080:1920:'max(0,min(iw-1080,iw*{x}-540))':'(ih-1920)/2',"
           f"setpts=PTS/{speed},fps=30,format=yuv420p")
     cmd = ["ffmpeg", "-loglevel", "error", "-y", "-ss", str(t_in), "-to", str(t_out), "-i", src, "-vf", vf,
-           "-c:v", "libx264", "-preset", "slow", "-crf", "17", "-movflags", "+faststart"]
+           "-c:v", "libx264", "-preset", "slow", "-crf", "22", "-movflags", "+faststart"]
     if s.get("keep_audio") and speed == 1.0:
         cmd += ["-c:a", "aac", "-b:a", "192k"]
     else:

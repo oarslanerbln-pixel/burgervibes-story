@@ -50,7 +50,7 @@ def fit_font(path, text, max_w, start, spacing_ratio=0.08):
     return ImageFont.truetype(path, size), int(size * spacing_ratio)
 
 
-def render_text(text, path, out, start_size, color, glow=None, shadow=True, max_w=940):
+def render_text(text, path, out, start_size, color, glow=None, shadow=True, max_w=940, stroke=0):
     font, spacing = fit_font(path, text, max_w, start_size)
     probe = ImageDraw.Draw(Image.new("RGBA", (10, 10)))
     tw, th, box = text_size(probe, text, font, spacing)
@@ -58,10 +58,10 @@ def render_text(text, path, out, start_size, color, glow=None, shadow=True, max_
     img = Image.new("RGBA", (tw + 2 * pad, th + 2 * pad), (0, 0, 0, 0))
     origin = (pad - box[0], pad - box[1])
 
-    def layer(fill):
+    def layer(fill, edge=0):
         lay = Image.new("RGBA", img.size, (0, 0, 0, 0))
-        ImageDraw.Draw(lay).multiline_text(origin, text, font=font, fill=fill,
-                                           spacing=spacing, align="center")
+        ImageDraw.Draw(lay).multiline_text(origin, text, font=font, fill=fill, spacing=spacing,
+                                           align="center", stroke_width=edge, stroke_fill=(13, 7, 23, 235))
         return lay
 
     if glow:
@@ -74,7 +74,8 @@ def render_text(text, path, out, start_size, color, glow=None, shadow=True, max_
     elif shadow:
         s = layer((0, 0, 0, 200)).filter(ImageFilter.GaussianBlur(14))
         img = Image.alpha_composite(img, s)
-    img = Image.alpha_composite(img, layer(color + (255,)))
+    # A dark outline keeps thin script lines readable on pink neon and busy footage.
+    img = Image.alpha_composite(img, layer(color + (255,), stroke))
     img.save(out)
     return img.size
 
@@ -141,7 +142,7 @@ def build(args):
         sub_png = os.path.join(tmp, "sub.png")
         sw, sh = render_text(args.sub, F_SCRIPT if args.script_sub else F_SUB, sub_png,
                              84 if args.script_sub else 96, accent if args.script_sub else CREAM,
-                             glow=None, shadow=True)
+                             glow=None, shadow=True, stroke=5 if args.script_sub else 3)
     tag_png = os.path.join(tmp, "tag.png")
     gw, gh = render_tag(tag_png, args.tag)
 
@@ -168,6 +169,10 @@ def build(args):
     # Headline position: upper third, below the 250 px Instagram header zone.
     pad = 90
     ty = 300 - pad if args.preset == "ask" else 360 - pad
+    if args.pos == "bottom":
+        # Faces sit in the upper third of crew shots: stack the text above the tag instead.
+        block = (th - 2 * pad) + ((56 + sh - 2 * pad) if sub_png else 0)
+        ty = H - 340 - gh - 70 - block - pad
     t0, d0 = 0.25, 0.4
     if args.preset == "punch":
         title_ov = (f"overlay=x='(W-w)/2-1300*pow(max(0,1-(t-{t0})/{d0}),3)':y={ty}")
@@ -209,10 +214,18 @@ def main():
     p.add_argument("--preset", choices=["neon", "punch", "ask"], default="neon")
     p.add_argument("--accent", choices=["pink", "cyan"], default="pink")
     p.add_argument("--tag", default="BURGER VIBES  ·  TEMPELHOFER DAMM 134")
-    p.add_argument("--dur", type=float, default=6.0)
+    p.add_argument("--pos", choices=["top", "bottom"], default="top", help="Headline position")
+    p.add_argument("--dur", type=float, help="Seconds; default 6, or the clip length (4-15 s) for video backgrounds")
     p.add_argument("--keep-audio", action="store_true", help="Keep the audio of a video background")
     p.add_argument("--out", required=True)
     a = p.parse_args()
+    if a.dur is None:
+        a.dur = 6.0
+        if a.bg and is_video(a.bg):
+            out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", a.bg],
+                                 capture_output=True, text=True).stdout.strip()
+            if out:
+                a.dur = round(min(15.0, max(4.0, float(out))), 2)
     a.title = a.title.replace("\\n", "\n")
     a.sub = a.sub.replace("\\n", "\n")
     build(a)
