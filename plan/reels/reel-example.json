@@ -1,0 +1,13 @@
+{
+ "clips": [
+  {"src": "selects/W1-Di-3.mp4", "seconds": 3.5},
+  {"src": "selects/W1-Mo-2.mp4", "seconds": 3.0, "startFrom": 0.5},
+  {"src": "selects/W2-Mo-2.mp4", "seconds": 2.5}
+ ],
+ "hook": "WIE SCHNELL\nIST EIN BURGER?",
+ "captions": [
+  {"text": "Frisch gebaut.", "from": 2.6, "to": 5.0},
+  {"text": "100% Beef. 100% Halal.", "from": 5.0, "to": 8.5}
+ ],
+ "cta": "Tempelhofer Damm 134"
+}

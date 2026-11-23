@@ -1,0 +1,5 @@
+{
+ "start_monday": "2026-11-23",
+ "timezone": "Europe/Berlin",
+ "_comment": "Monday on which week 1 of tools/plan.json began. Tuesday 24.11.2026 = W1-Di."
+}

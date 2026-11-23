@@ -1,0 +1,12 @@
+remotion/node_modules/
+footage/**/*
+!footage/**/
+!footage/**/.keep
+output/**/*
+!output/**/
+!output/**/.keep
+assets/selects/*
+assets/ai/*
+!assets/**/.keep
+__pycache__/
+.env
