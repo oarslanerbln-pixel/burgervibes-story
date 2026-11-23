@@ -119,5 +119,54 @@
   "in": 1.0,
   "out": 7.5,
   "note": "C016, kept for later"
+ },
+ "LIB-C046": {
+  "clip": "footage/2026-11/drive/DJI_20261101191657_0732_D.MP4",
+  "in": 0.0,
+  "out": 5.4,
+  "note": "shared library clip"
+ },
+ "LIB-C047": {
+  "clip": "footage/2026-11/drive/DJI_20261101191707_0733_D.MP4",
+  "in": 0.0,
+  "out": 4.0,
+  "note": "shared library clip"
+ },
+ "LIB-C048": {
+  "clip": "footage/2026-11/drive/DJI_20261101191727_0734_D.MP4",
+  "in": 6.0,
+  "out": 11.9,
+  "note": "shared library clip"
+ },
+ "LIB-C049": {
+  "clip": "footage/2026-11/drive/DJI_20261101191752_0735_D.MP4",
+  "in": 1.0,
+  "out": 8.0,
+  "note": "shared library clip"
+ },
+ "LIB-C004": {
+  "clip": "footage/2026-11/drive/DJI_20261101183656_0690_D.MP4",
+  "in": 9.5,
+  "out": 16.5,
+  "note": "shared library clip"
+ },
+ "LIB-C027": {
+  "clip": "footage/2026-11/drive/DJI_20261101185102_0713_D.MP4",
+  "in": 0.0,
+  "out": 3.9,
+  "note": "shared library clip"
+ },
+ "LIB-C011": {
+  "clip": "footage/2026-11/drive/DJI_20261101184126_0697_D.MP4",
+  "in": 12.0,
+  "out": 19.0,
+  "note": "shared library clip"
+ },
+ "LIB-C012": {
+  "clip": "footage/2026-11/drive/DJI_20261101184407_0698_D.MP4",
+  "in": 2.0,
+  "out": 9.0,
+  "note": "shared library clip",
+  "text_pos": "bottom"
  }
 }

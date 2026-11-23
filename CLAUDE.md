@@ -15,10 +15,10 @@ of stories and reels.
 | Path | What |
 | --- | --- |
 | `footage/<YYYY-MM>/` | Raw monthly shoot. **Never modify or delete.** `_index/` is generated. |
-| `assets/selects/` | Cut 9:16 clips, named by slot id (`W1-Mo-2.mp4`) |
+| `assets/selects/` | Cut 9:16 clips, named by slot id (`W1-Mo-2.mp4`), plus shared library cuts `LIB-C046.mp4` used by every slot whose shot starts with `C046:` |
 | `assets/ai/` | Gemini images, named by slot id (`W1-Mo-1.png`) |
 | `assets/fonts/` | Anton, Bebas Neue, Pacifico (local, no CDN) |
-| `tools/plan.py` → `tools/plan.json` | The 4-week story plan (84 slots). Edit `plan.py`, then run it. |
+| `tools/plan.py` → `tools/plan.json` | The story plan (23.11.–24.12.2026, 92 slots incl. the advent calendar). Edit `plan.py`, run it, then `tools/build_page.py`. |
 | `plan/story-plan.html` | Same plan as a page (published copy: claude.ai/artifact/RHo2kgo4V7Kj1vXdVDFwi5) |
 | `plan/selects.json` | Your edit decisions: slot → clip, in/out, crop, speed |
 | `plan/reels/*.json` | Reel edit decisions (clips, hook, captions, CTA) |
@@ -100,7 +100,7 @@ user answers "onay".
 Pink `#ff2d95`, cyan `#00e5ff`, ink `#0d0717`, cream `#fff4e6`. Headlines
 Anton (uppercase), secondary Bebas Neue, accent script Pacifico (sparingly).
 One accent per frame. Voice: German "du", warm Berlin, cheeky not cheap.
-Motion: neon ignite / punch / ask presets; springs, no endless loops.
+Motion: neon ignite / punch / ask / door (advent number in a neon door frame) presets; springs, no endless loops.
 
 ## Commands
 

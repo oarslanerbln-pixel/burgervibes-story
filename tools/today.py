@@ -19,6 +19,7 @@ import datetime as dt
 import glob
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -31,11 +32,19 @@ DAYKEYS = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
 DAYNAMES_TR = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"]
 
 
-def media_for(sid):
-    for sub in ("selects", "ai"):
-        for path in sorted(glob.glob(os.path.join(ROOT, "assets", sub, sid + ".*"))):
-            if not path.endswith(".keep"):
-                return path
+def library_id(slot):
+    """Shots written as "C046: ..." can reuse the shared library cut LIB-C046."""
+    m = re.match(r"(C\d{3}):", slot.get("shot", "") if slot else "")
+    return "LIB-" + m.group(1) if m else None
+
+
+def media_for(sid, slot=None):
+    names = [sid] + ([library_id(slot)] if library_id(slot) else [])
+    for name in names:
+        for sub in ("selects", "ai"):
+            for path in sorted(glob.glob(os.path.join(ROOT, "assets", sub, name + ".*"))):
+                if not path.endswith(".keep"):
+                    return path
     return None
 
 
@@ -51,26 +60,29 @@ def main():
     start = dt.date.fromisoformat(sched["start_monday"])
     offset = (day - start).days
     plan = json.load(open(os.path.join(HERE, "plan.json"), encoding="utf-8"))
-    weeks = max(s["week"] for s in plan["slots"])
     if offset < 0:
         print(f"Plan starts on {start}, nothing to do on {day}.")
         return 0
-    week = offset // 7 + 1
-    if week > weeks:
-        print(f"PLAN FINISHED on {start + dt.timedelta(days=7 * weeks - 1)}: a new month must be planned.")
+    last = max(start + dt.timedelta(days=(s["week"] - 1) * 7 + DAYKEYS.index(s["day"])) for s in plan["slots"])
+    if day > last:
+        print(f"PLAN FINISHED on {last}: a new month must be planned.")
         return 2
+    week = offset // 7 + 1
     dkey = DAYKEYS[day.weekday()]
     slots = sorted((s for s in plan["slots"] if s["week"] == week and s["day"] == dkey),
                    key=lambda s: s.get("order", 0))
 
     sel_path = os.path.join(ROOT, "plan", "selects.json")
     selects = json.load(open(sel_path, encoding="utf-8")) if os.path.exists(sel_path) else {}
+    if not slots:
+        print(f"No stories planned for {day} (plan continues until {last}).")
+        return 0
     out_dir = os.path.join(ROOT, "output", "daily", day.isoformat())
     os.makedirs(out_dir, exist_ok=True)
 
     # 1) AI images for today's FLOW slots
     gen_note = ""
-    flow_ids = [s["id"] for s in slots if s["src"] == "FLOW" and not media_for(s["id"])]
+    flow_ids = [s["id"] for s in slots if s["src"] == "FLOW" and not media_for(s["id"], s)]
     if flow_ids and not a.no_generate:
         r = subprocess.run([PY, os.path.join(HERE, "generate.py"), "--ids", *flow_ids],
                            capture_output=True, text=True)
@@ -88,7 +100,7 @@ def main():
     # 2) render
     rows, todo_shots = [], []
     for s in slots:
-        media = media_for(s["id"])
+        media = media_for(s["id"], s)
         if s["src"] == "ECHT" and not media:
             todo_shots.append(s)
             continue
@@ -100,7 +112,8 @@ def main():
             cmd += ["--sub", s["sub"]]
         if s["script_sub"]:
             cmd += ["--script-sub"]
-        if selects.get(s["id"], {}).get("text_pos") == "bottom":
+        sel = selects.get(s["id"]) or selects.get(library_id(s) or "", {})
+        if sel.get("text_pos") == "bottom":
             cmd += ["--pos", "bottom"]
         if media:
             # Selects only carry audio when cut with keep_audio (original sound, never music).

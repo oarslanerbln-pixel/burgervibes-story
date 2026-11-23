@@ -80,6 +80,57 @@ def render_text(text, path, out, start_size, color, glow=None, shadow=True, max_
     return img.size
 
 
+def render_door(text, out, accent):
+    """Advent door: small "TÜRCHEN" label over a huge neon number in a neon door frame.
+
+    The number is the hero (it is what people count down with), so it gets
+    ~3x the headline size; the frame reads as a door at thumbnail size.
+    """
+    label, number = (text.split("\n") + [""])[:2]
+    f_label = ImageFont.truetype(F_SUB, 120)
+    f_num = ImageFont.truetype(F_HEAD, 520)
+    probe = ImageDraw.Draw(Image.new("RGBA", (10, 10)))
+    nb = probe.textbbox((0, 0), number, font=f_num)
+    lb = probe.textbbox((0, 0), label, font=f_label)
+    pad = 90
+    door_w = max(nb[2] - nb[0] + 160, 520)
+    door_h = nb[3] - nb[1] + 170
+    W_ = door_w + 2 * pad
+    label_h = lb[3] - lb[1]
+    H_ = label_h + 40 + door_h + 2 * pad
+    img = Image.new("RGBA", (W_, H_), (0, 0, 0, 0))
+    lx = (W_ - (lb[2] - lb[0])) // 2 - lb[0]
+    door_box = (pad, pad + label_h + 40, pad + door_w, pad + label_h + 40 + door_h)
+    nx = (W_ - (nb[2] - nb[0])) // 2 - nb[0]
+    ny = door_box[1] + (door_h - (nb[3] - nb[1])) // 2 - nb[1]
+
+    def layer(fill, number_fill=None, frame=True, label_fill=None):
+        lay = Image.new("RGBA", img.size, (0, 0, 0, 0))
+        d = ImageDraw.Draw(lay)
+        if frame:
+            d.rounded_rectangle(door_box, radius=46, outline=fill, width=14)
+        if number_fill:
+            d.text((nx, ny), number, font=f_num, fill=number_fill)
+        if label_fill:
+            d.text((lx, pad - lb[1]), label, font=f_label, fill=label_fill)
+        return lay
+
+    # dark panel behind the door so the number reads on any neon wall
+    panel = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    ImageDraw.Draw(panel).rounded_rectangle(door_box, radius=46, fill=(8, 4, 18, 170))
+    img = Image.alpha_composite(img, panel)
+    for radius, passes in ((40, 2), (16, 2), (5, 1)):
+        g = layer(accent + (255,), accent + (255,)).filter(ImageFilter.GaussianBlur(radius))
+        for _ in range(passes):
+            img = Image.alpha_composite(img, g)
+    img = Image.alpha_composite(img, layer((255, 240, 250, 255), (255, 244, 250, 255)))
+    shadow = layer((0, 0, 0, 0), frame=False, label_fill=(0, 0, 0, 220)).filter(ImageFilter.GaussianBlur(10))
+    img = Image.alpha_composite(img, shadow)
+    img = Image.alpha_composite(img, layer((0, 0, 0, 0), frame=False, label_fill=CREAM + (255,)))
+    img.save(out)
+    return img.size
+
+
 def render_shade(out, strength=0.55):
     """Top and bottom darkening so text reads on any Flow image."""
     shade = Image.new("RGBA", (W, H), (0, 0, 0, 0))
@@ -128,11 +179,16 @@ def build(args):
     dur = args.dur
     fps = 30
     shade = os.path.join(tmp, "shade.png")
-    render_shade(shade, 0.62 if args.preset != "punch" else 0.5)
+    render_shade(shade, {"punch": 0.5, "door": 0.8}.get(args.preset, 0.62))
 
     accent = PINK if args.accent == "pink" else CYAN
+    if args.preset == "door":
+        # The door frame is busy neon already: the teaser line stays plain cream caps.
+        args.script_sub = False
     title_png = os.path.join(tmp, "title.png")
-    if args.preset == "neon":
+    if args.preset == "door":
+        tw, th = render_door(args.title, title_png, accent)
+    elif args.preset == "neon":
         tw, th = render_text(args.title, F_HEAD, title_png, 190, (255, 240, 250), glow=accent)
     else:
         tw, th = render_text(args.title, F_HEAD, title_png, 170 if args.preset == "punch" else 150, CREAM)
@@ -168,7 +224,7 @@ def build(args):
 
     # Headline position: upper third, below the 250 px Instagram header zone.
     pad = 90
-    ty = 300 - pad if args.preset == "ask" else 360 - pad
+    ty = 300 - pad if args.preset in ("ask", "door") else 360 - pad
     if args.pos == "bottom":
         # Faces sit in the upper third of crew shots: stack the text above the tag instead.
         block = (th - 2 * pad) + ((56 + sh - 2 * pad) if sub_png else 0)
@@ -180,7 +236,7 @@ def build(args):
     else:
         title_in = f"[2:v]format=rgba,fade=t=in:st={t0}:d={d0}:alpha=1[ti]"
         title_ov = f"overlay=x='(W-w)/2':y='{ty}+70*max(0,1-max(0,t-{t0})/{d0})'"
-        if args.preset == "neon":
+        if args.preset in ("neon", "door"):
             title_ov += ":enable='not(between(t,0.48,0.53)+between(t,0.62,0.65)+between(t,0.74,0.76))'"
 
     chain = [bg_chain, "[bg][1:v]overlay=0:0[b1]", title_in, f"[b1][ti]{title_ov}[b2]"]
@@ -211,7 +267,7 @@ def main():
     p.add_argument("--title", required=True, help="Headline, use \\n for line breaks")
     p.add_argument("--sub", default="", help="Second line")
     p.add_argument("--script-sub", action="store_true", help="Second line in neon script font")
-    p.add_argument("--preset", choices=["neon", "punch", "ask"], default="neon")
+    p.add_argument("--preset", choices=["neon", "punch", "ask", "door"], default="neon")
     p.add_argument("--accent", choices=["pink", "cyan"], default="pink")
     p.add_argument("--tag", default="BURGER VIBES  ·  TEMPELHOFER DAMM 134")
     p.add_argument("--pos", choices=["top", "bottom"], default="top", help="Headline position")

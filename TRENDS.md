@@ -45,9 +45,9 @@ still needs the neon look, real product footage and a true statement.
 | --- | --- | --- |
 | Fri 27.11.2026 | Black Friday | "BLACK FRIDAY? NEON FRIDAY." – no fake discount (in plan) |
 | Sun 29.11.2026 | 1st Advent | "ERSTER ADVENT. ERSTER BURGER?" (in plan) |
-| 01.–24.12. | Advent season | optional series "Burger-Adventskalender": one door per day (poll, fact, crew) |
+| 01.–24.12. | Advent season | "Burger-Adventskalender" in plan: frame 1 of every day is door N (preset `door`), the rest of the day is what is behind it |
 | late Nov – 23.12. | Berlin Christmas markets | "Erst Glühwein, dann Burger." (only if open late enough) |
-| Sun 06.12.2026 | Nikolaus | "Stiefel? Wir füllen lieber Bäuche." |
+| Sun 06.12.2026 | Nikolaus + 2nd Advent | door 6: "Nikolaus! Stiefel raus, Burger rein." (in plan) |
 | 24.–26.12. | Christmas | opening hours story (ask the user) |
 | 31.12. | Silvester | "Letzter Burger 2026?" + opening hours |
 | 14.02.2027 | Valentine's Day | "Teilen? Nur mit Liebe." two-burger shot |

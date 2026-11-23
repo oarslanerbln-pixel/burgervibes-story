@@ -25,7 +25,8 @@ FORMATS_DE = {"Mo": ["MENÜ-MONTAG", "Produkt im Fokus: mit Appetit in die Woche
 WEEKS_DE = {"1": ["Hallo Tempelhof", "Kennenlernen: Wer wir sind, was wir machen und wo ihr uns findet."],
             "2": ["Handwerk", "Handwerk: Zutaten, Zubereitung und Halal-Qualität."],
             "3": ["Community", "Gemeinschaft: Gäste, Feedback und Nachbarschaft."],
-            "4": ["Specials & Spaß", "Burger der Woche, Spiele und Monatsabschluss."]}
+            "4": ["Specials & Spaß", "Burger der Woche, Spiele und Monatsabschluss."],
+            "5": ["Advent-Finale", "Die letzten vier Türchen bis Heiligabend."]}
 
 
 def main():
