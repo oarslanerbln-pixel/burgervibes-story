@@ -114,8 +114,9 @@ def main():
             lines.append(f"| {s['time']} | {f} | {s['sticker']} | {note} |")
         lines.append("")
     if todo_shots:
-        lines += ["## Bugün telefonla çek (10–15 sn, dikey, 60 fps)",
-                  "Klibi bu oturuma yükle, aynı yazı ve animasyonla render edeyim:"]
+        lines += ["## Gerçek çekim gereken story'ler",
+                  "Aylık çekimden laptop'ta hazırlandıysa dosya adı aşağıdaki kod. Yoksa bugün telefonla "
+                  "10–15 sn çek (dikey, 60 fps) ve bu oturuma yükle; aynı yazı ve animasyonla render ederim:"]
         for s in todo_shots:
             lines.append(f"- **{s['time']} · {s['id']}**: {s['shot']} → yazı: „{s['title'].replace(chr(10), ' ')}\" · sticker: {s['sticker']}")
         lines.append("")
