@@ -73,7 +73,8 @@ def main():
                            capture_output=True, text=True)
         if r.returncode != 0 or any(not media_for(i) for i in flow_ids):
             log = r.stdout + r.stderr
-            why = ("API anahtarı eksik ya da geçersiz" if "API_KEY" in log else
+            why = ("Google projesinde faturalandırma kapalı, ücretsiz katmanda görsel kotası yok" if "FREE_TIER" in log else
+                   "API anahtarı eksik ya da geçersiz" if "API_KEY" in log or "HTTP 401" in log else
                    "kota/limit doldu" if "429" in log or "RESOURCE_EXHAUSTED" in log else
                    "güvenlik filtresi görseli engelledi" if "safety" in log.lower() else
                    "bağlantı ya da sunucu hatası")
