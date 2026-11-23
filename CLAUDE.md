@@ -64,6 +64,12 @@ it with `tools/story.py` using the slot's text. Exit code 2 means the 4-week pla
 is used up: tell the user a new month must be planned (new themes in `tools/plan.py`,
 no repeated headline, new `start_monday`).
 
+**Posting rhythm:** one posting moment per day, 2–3 frames posted back to back
+(`POST_TIME` in `tools/plan.py`: Mon–Thu 12:00, Fri–Sat 17:00, Sun 13:00, all
+inside the opening hours Mon–Thu 12–24, Fri–Sun 12–01). Each day is one mini
+story: hook → process → interaction. Never put a poll's result or a question's
+answers in the same set as the poll itself; share them the next day.
+
 ## Rules (non-negotiable)
 
 - **Product is always real footage.** No AI burger, patty or fries as a hero

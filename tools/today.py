@@ -60,7 +60,8 @@ def main():
         print(f"PLAN FINISHED on {start + dt.timedelta(days=7 * weeks - 1)}: a new month must be planned.")
         return 2
     dkey = DAYKEYS[day.weekday()]
-    slots = [s for s in plan["slots"] if s["week"] == week and s["day"] == dkey]
+    slots = sorted((s for s in plan["slots"] if s["week"] == week and s["day"] == dkey),
+                   key=lambda s: s.get("order", 0))
 
     sel_path = os.path.join(ROOT, "plan", "selects.json")
     selects = json.load(open(sel_path, encoding="utf-8")) if os.path.exists(sel_path) else {}
@@ -91,7 +92,8 @@ def main():
         if s["src"] == "ECHT" and not media:
             todo_shots.append(s)
             continue
-        target = os.path.join(out_dir, f"{s['time'].replace(':', '')}_{s['id']}.mp4")
+        # "1200_1_W1-Di-1.mp4": post time, then position in the day's set.
+        target = os.path.join(out_dir, f"{s['time'].replace(':', '')}_{s.get('order', 1)}_{s['id']}.mp4")
         cmd = [PY, os.path.join(HERE, "story.py"), "--preset", s["preset"], "--accent", s["accent"],
                "--title", s["title"], "--out", target]
         if s["sub"]:
@@ -113,18 +115,23 @@ def main():
     lines = [f"# Burger Vibes · {DAYNAMES_TR[day.weekday()]} {day.strftime('%d.%m.%Y')}",
              f"Hafta {week} „{plan['weeks'][str(week)][0]}\" · Format: {fmt[0]}",
              f"Müzik (Instagram'da ara): {music[0]} · {music[1]}", ""]
+    post_time = slots[0]["time"] if slots else ""
     if rows:
-        lines += ["## Hazır story'ler", "| Saat | Dosya | Sticker | Not |", "|---|---|---|---|"]
+        lines += [f"## {post_time}'de paylaş: {len(rows)} kare, bu sırayla",
+                  "Hepsini aynı anda, art arda yükle. Her kareye aynı parçayı ekle (farklı bölümleri seçebilirsin).",
+                  "| Sıra | Dosya | Sticker | Not |", "|---|---|---|---|"]
         for s, f, kind in rows:
             note = kind + (" · KI-Info etiketini aç" if kind == "AI" else "")
-            lines.append(f"| {s['time']} | {f} | {s['sticker']} | {note} |")
+            if selects.get(s["id"], {}).get("keep_audio"):
+                note += " · orijinal ses var: müzik ekleme"
+            lines.append(f"| {s.get('order', '')} | {f} | {s['sticker']} | {note} |")
         lines.append("")
     if todo_shots:
         lines += ["## Gerçek çekim gereken story'ler",
                   "Aylık çekimden laptop'ta hazırlandıysa dosya adı aşağıdaki kod. Yoksa bugün telefonla "
                   "10–15 sn çek (dikey, 60 fps) ve bu oturuma yükle; aynı yazı ve animasyonla render ederim:"]
         for s in todo_shots:
-            lines.append(f"- **{s['time']} · {s['id']}**: {s['shot']} → yazı: „{s['title'].replace(chr(10), ' ')}\" · sticker: {s['sticker']}")
+            lines.append(f"- **Sıra {s.get('order', '')} · {s['id']}**: {s['shot']} → yazı: „{s['title'].replace(chr(10), ' ')}\" · sticker: {s['sticker']}")
         lines.append("")
     if gen_note:
         lines += ["## Uyarı", gen_note, ""]

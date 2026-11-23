@@ -41,7 +41,9 @@ WEEKS = {
     4: ("Specials & Spaß", "Haftanın burgeri, oyunlar, ay kapanışı"),
 }
 
-# (day, time, src, scene_or_shot, title, sub, preset, accent, sticker)
+# (week, day, time, src, scene_or_shot, title, sub, preset, accent, sticker)
+# The time column is historical: every frame of a day is posted together at
+# POST_TIME[day], in the order listed here.
 S = [
  # ---------------- WEEK 1 - Hallo Tempelhof
  (1,"Mo","11:30","FLOW","an empty burger restaurant counter at opening time, bar stools, steam rising from the kitchen pass, pink and cyan neon glow","NEUE WOCHE.\nNEUE VIBES.","Wir haben offen","neon","pink","Standort"),
@@ -51,11 +53,10 @@ S = [
  # one mini story (hook -> process -> payoff -> interaction) instead of three loose frames.
  (1,"Di","11:00","ECHT","C013: Patties kommen gewürzt auf den Grill","WAS PASSIERT\nAUF DEM GRILL?","Bleib dran","punch","pink","—"),
  (1,"Di","13:00","ECHT","C003: Käse schmilzt auf den Patties, Kruste sichtbar","DIE KRUSTE\nHAT EINEN NAMEN.","Maillard-Reaktion","neon","cyan","—"),
- (1,"Di","13:01","ECHT","C016: Brötchen rösten auf der Platte","AUCH DAS BRÖTCHEN\nWIRD GERÖSTET.","Damit die Sauce nicht durchweicht","punch","cyan","—"),
  (1,"Di","18:00","ECHT","C024: Burger wird gebaut, Hero-Shot am Ende","VON ROH\nZU WOW.","WIE ISST DU DEINEN BURGER?","ask","pink","Umfrage: Mit den Händen / Messer & Gabel"),
  (1,"Mi","12:00","ECHT","C053: Käsesauce läuft von der Kelle","KÄSE\nODER SAUCE?","JETZT ABSTIMMEN","ask","pink","Umfrage: Käse / Sauce"),
  (1,"Mi","15:00","ECHT","C054: Maiskolben mit Burger-Vibes-Fähnchen","MAIS ODER\nPOMMES?","DEINE SEITE","ask","cyan","Umfrage: Mais / Pommes"),
- (1,"Mi","19:00","ECHT","C006: Burger vor gestapelten Burger-Vibes-Boxen","ERGEBNIS!","Schick's dem, der falsch gewählt hat","neon","cyan","Umfrage-Ergebnis teilen"),
+ (1,"Mi","19:00","ECHT","C006: Burger vor gestapelten Burger-Vibes-Boxen","SCHICK'S\nDEINER CREW.","Wer zahlt die nächste Runde?","neon","cyan","— (Teilen-Pfeil zeigen; am nächsten Tag Umfrage-Ergebnis als Story teilen)"),
  (1,"Do","11:00","ECHT","C012: Crew-Mitglied winkt in die Kamera","SAG HALLO\nZUR CREW.","Die Hände hinter deinem Burger","neon","pink","—"),
  (1,"Do","14:00","ECHT","C037: Crew-Mitglied spricht am Grill in die Kamera (Originalton)","FRAG\nDIE CREW","WAS WILLST DU WISSEN?","ask","cyan","Fragen-Sticker"),
  (1,"Do","19:00","ECHT","C025: Crew packt eine Bestellung","MIT LIEBE\nGEPACKT.","Burger with Love","punch","pink","—"),
@@ -77,7 +78,7 @@ S = [
  (2,"Di","18:00","ECHT","Halal-Nachweis des Lieferanten zeigen (nur echtes Dokument!)","100% HALAL.\n100% BEEF.","KEINE KOMPROMISSE","punch","cyan","—"),
  (2,"Mi","12:00","FLOW","split composition, left half bathed in pink neon, right half in cyan neon, dark studio, empty center","SÜSS ODER\nSCHARF?","JETZT ABSTIMMEN","ask","pink","Umfrage: Süß / Scharf"),
  (2,"Mi","15:00","FLOW","a cassette tape and crumpled burger wrapping paper on a dark table, 90s mood, neon glow","WELCHER SONG\nZUM BURGER?","SCHICK UNS DEINEN","ask","cyan","Musik-Fragen-Sticker"),
- (2,"Mi","19:00","ECHT","Antworten der Follower als Screenshot-Collage","EURE\nPLAYLIST","","neon","pink","Fragen-Antworten teilen"),
+ (2,"Mi","19:00","ECHT","C052: Käsesauce von der Kelle (Querformat, Ausschnitt)","FLÜSSIGES\nGOLD.","Käsesauce, frisch","neon","pink","—"),
  (2,"Do","11:00","ECHT","Grill-Crew stellt sich vor: Name + 1 Satz in die Kamera","WER GRILLT\nHEUTE?","","punch","cyan","—"),
  (2,"Do","14:00","ECHT","Crew zeigt ihre Lieblings-Kombi auf dem Tablett","CREW-TIPP","Die Lieblings-Kombi der Crew","neon","pink","—"),
  (2,"Do","19:00","FLOW","a neon-lit kitchen pass with blank order tickets fluttering, motion blur, nothing readable","BESTELLUNG\nRAUS!","","neon","cyan","—"),
@@ -113,7 +114,7 @@ S = [
  (3,"So","16:00","ECHT","Zwei Getränke stoßen an, zwei Burger daneben","SONNTAGS-\nDATE","","punch","pink","—"),
  (3,"So","19:00","FLOW","a single glowing neon arrow on a dark wall pointing right, cyan","NÄCHSTE\nRUNDE","Specials & Spaß","neon","cyan","—"),
  # ---------------- WEEK 4 - Specials & Spaß
- (4,"Mo","11:30","FLOW","an empty pedestal on a dark stage with pink and cyan neon rim lights, product reveal atmosphere","BURGER DER\nWOCHE","Reveal um 13 Uhr","neon","pink","Countdown-Sticker"),
+ (4,"Mo","11:30","FLOW","an empty pedestal on a dark stage with pink and cyan neon rim lights, product reveal atmosphere","BURGER DER\nWOCHE","Tippen zum Enthüllen","neon","pink","—"),
  (4,"Mo","13:00","ECHT","Reveal: Burger der Woche dreht sich auf dem Teller","DAS\nIST ER.","","punch","cyan","—"),
  (4,"Mo","18:30","ECHT","Biss in den Burger der Woche, nah","SCHON\nPROBIERT?","","ask","pink","Emoji-Slider 🍔"),
  (4,"Di","11:00","ECHT","Zutaten des Specials als Flatlay","DIE\nZUTATEN","","punch","cyan","—"),
@@ -137,6 +138,12 @@ S = [
 ]
 
 DAYS = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
+# One posting moment per day, 2-3 frames in a row: a whole mini story costs the
+# poster one app session, and the account keeps its story ring every day.
+# Lunch on weekdays, early evening Fri/Sat, Sunday lunch; all inside the
+# opening hours (Mon-Thu 12-24, Fri-Sun 12-01).
+POST_TIME = {"Mo": "12:00", "Di": "12:00", "Mi": "12:00", "Do": "12:00",
+             "Fr": "17:00", "Sa": "17:00", "So": "13:00"}
 
 
 def build():
@@ -147,7 +154,7 @@ def build():
         counter[key] = counter.get(key, 0) + 1
         sid = f"W{w}-{d}-{counter[key]}"
         slots.append({
-            "id": sid, "week": w, "day": d, "time": t, "src": src,
+            "id": sid, "week": w, "day": d, "time": POST_TIME[d], "order": counter[key], "src": src,
             "prompt": STYLE + what + "." if src == "FLOW" else "",
             "shot": what if src == "ECHT" else "",
             "title": title, "sub": sub, "script_sub": bool(sub) and not sub.isupper(),  # mixed case = neon script line
@@ -155,6 +162,10 @@ def build():
         })
     # Sanity: 28 days x 3 slots, no duplicate headlines across the month.
     assert len(slots) >= 84, len(slots)
+    per_day = {}
+    for sl in slots:
+        per_day[(sl["week"], sl["day"])] = per_day.get((sl["week"], sl["day"]), 0) + 1
+    assert max(per_day.values()) <= 3, per_day
     titles = [s["title"] for s in slots]
     dupes = {x for x in titles if titles.count(x) > 1}
     return slots, dupes
@@ -162,7 +173,7 @@ def build():
 
 if __name__ == "__main__":
     slots, dupes = build()
-    out = {"style": STYLE, "motion": MOTION, "formats": FORMATS, "music": MUSIC,
+    out = {"start": "2026-11-23", "post_time": POST_TIME, "style": STYLE, "motion": MOTION, "formats": FORMATS, "music": MUSIC,
            "weeks": {str(k): v for k, v in WEEKS.items()}, "days": DAYS, "slots": slots}
     here = os.path.dirname(os.path.abspath(__file__))
     with open(os.path.join(here, "plan.json"), "w", encoding="utf-8") as f:

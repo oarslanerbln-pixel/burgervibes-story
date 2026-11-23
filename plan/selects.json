@@ -13,12 +13,6 @@
   "note": "C003"
  },
  "W1-Di-3": {
-  "clip": "footage/2026-11/drive/DJI_20261101184554_0702_D.MP4",
-  "in": 1.0,
-  "out": 7.5,
-  "note": "C016"
- },
- "W1-Di-4": {
   "clip": "footage/2026-11/drive/DJI_20261101184920_0710_D.MP4",
   "in": 8.5,
   "out": 15.5,
@@ -119,5 +113,11 @@
   "in": 0.0,
   "out": 4.6,
   "note": "C051"
+ },
+ "_spare_bun_toast": {
+  "clip": "footage/2026-11/drive/DJI_20261101184554_0702_D.MP4",
+  "in": 1.0,
+  "out": 7.5,
+  "note": "C016, kept for later"
  }
 }
