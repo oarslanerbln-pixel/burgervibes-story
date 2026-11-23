@@ -70,6 +70,11 @@ inside the opening hours Mon–Thu 12–24, Fri–Sun 12–01). Each day is one 
 story: hook → process → interaction. Never put a poll's result or a question's
 answers in the same set as the poll itself; share them the next day.
 
+**Trends:** every Sunday evening a scheduled task runs the Trend-Radar in
+`TRENDS.md` (calendar moments, Berlin weather/events, platform formats) and
+proposes at most 3 changes for the coming week. Nothing is applied before the
+user answers "onay".
+
 ## Rules (non-negotiable)
 
 - **Product is always real footage.** No AI burger, patty or fries as a hero
